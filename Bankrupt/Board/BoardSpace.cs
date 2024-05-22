@@ -21,7 +21,7 @@ public class BoardSpace
 
     public bool HasOwner() => Owner != null;
 
-    public Player GetOwner() => Owner;
+    public Player? GetOwner() => Owner;
 
     public void Claim(Player owner)
     {

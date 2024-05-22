@@ -4,7 +4,7 @@ public static class Simulator
 {
     public static List<SimulationResult>? Simulations { get; set; }
 
-    public static double AverageTurnDuration => Simulations.Select(a => a.LastedTurns)
+    public static double? AverageTurnDuration => Simulations?.Select(a => a.LastedTurns)
                                                            .Average();
 
     public static string? WinnestPlayer
@@ -44,7 +44,7 @@ public static class Simulator
         Console.Out.WriteLine($"Total games ended by timeout: {Simulations.Where(a=>a.WinnerName.ToLower()=="timeout").Count()}");
 
         Console.Out.WriteLine();
-        Console.Out.WriteLine($"Average match turn duration: {(int)AverageTurnDuration}");
+        Console.Out.WriteLine($"Average match turn duration: {(int)(AverageTurnDuration??1)}");
 
         var percentages = Simulations.GroupBy(x => x.WinnerName,
                                (t, g) => new { val = $"{t}:{Math.Round(decimal.Parse(g.Count().ToString()) / decimal.Parse(totalSimulations.ToString()) * 100m,2)}%" });
