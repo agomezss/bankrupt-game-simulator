@@ -26,13 +26,7 @@ public static class Simulator
                                  .AddPlayer(new RandomPlayer())
                                  .Play();
 
-            var result = new SimulationResult
-            {
-                SimulationNumber = i + 1,
-                EndedTimeout = game.IsTimeout,
-                LastedTurns = game.Turn,
-                WinnerName = game.WinnerName
-            };
+            var result = new SimulationResult(i + 1, game.Turn, game.IsTimeout, game.WinnerName);
 
             Simulations ??= new List<SimulationResult>();
             Simulations.Add(result);

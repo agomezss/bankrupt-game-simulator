@@ -6,31 +6,24 @@ public class Board
 {
     public List<BoardSpace> Spaces { get; set; }
 
-    public Board()
-    {
-        this.Spaces = Configuration.ReadBoardSpacesFromConfig();
-    }
+    public Board() => Spaces = Configuration.ReadBoardSpacesFromConfig();
 
-    public void ResetAllSpacesBelongingToPlayer(Player player)
-    {
-        Spaces.Where(a => a.GetOwner() == player).ToList().ForEach(a => a.Unclaim());
-    }
+    public void ResetAllSpacesBelongingToPlayer(Player player) => Spaces.Where(a => a.GetOwner() == player)
+                                                                        .ToList()
+                                                                        .ForEach(a => a.Unclaim());
 
     public void PlacePlayerOnSpaceAccordingToDiceRoll(Player player, int diceResult)
     {
-        var nextPlayerSpace = player.GetSteppedBoardSpace() + diceResult;
+        var nextPlayerSpace = player.SteppedBoardSpace1 + diceResult;
 
         if(nextPlayerSpace > Spaces.Count)
         {
-            nextPlayerSpace = nextPlayerSpace - Spaces.Count;
+            nextPlayerSpace -= Spaces.Count;
             player.GainCoins(100);
         }
 
         player.SetSteppedBoardSpace(nextPlayerSpace);
     }
 
-    public BoardSpace GetSpaceByNumber(int stepNumber)
-    {
-        return Spaces[stepNumber - 1];
-    }
+    public BoardSpace GetSpaceByNumber(int stepNumber) => Spaces[stepNumber - 1];
 }

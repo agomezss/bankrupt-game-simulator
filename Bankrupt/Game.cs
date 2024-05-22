@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 
 namespace Alessandro.Bankrupt;
 
@@ -21,7 +22,7 @@ public class Game
     }
 
     public bool IsOver => IsTimeout || Players.Where(a => a.IsLoser)
-                                       .ToList().Count >= Players.Count - 1;
+                                              .ToList().Count >= Players.Count - 1;
 
     public Game() => Board = new Board();
 
@@ -57,17 +58,17 @@ public class Game
 
     private Player GetNextPlayer()
     {
-        Player? nextPlayer = null;
+        Player? nextPlayer;
 
         do
         {
             var ok = PlayOrder.TryDequeue(out nextPlayer);
 
-            if (!ok)
-                throw new Exception("Concurrency Exception Caught");
+            if (!ok || nextPlayer == null)
+                Environment.Exit(-1);
 
             PlayOrder.Enqueue(nextPlayer);
-        } while (nextPlayer.Lose);
+        } while (nextPlayer.HasLost);
 
         return nextPlayer;
     }

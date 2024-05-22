@@ -1,6 +1,4 @@
 ﻿using Alessandro.Bankrupt.AI.Actions;
-using System;
-using System.Collections.Generic;
 
 namespace Alessandro.Bankrupt
 {
@@ -14,13 +12,13 @@ namespace Alessandro.Bankrupt
 
         private int SteppedBoardSpace { get; set; }
 
-        public bool IsLoser { get { return Coins < 0; } }
+        public bool IsLoser => Coins < 0;
 
         public int Coins { get; set; }
 
-        public bool Lose { get; set; }
+        public bool HasLost { get; set; }
 
-        protected List<GameAction> _actions = new List<GameAction>();
+        protected List<GameAction> _actions = new();
 
         public Player(string name)
         {
@@ -40,42 +38,24 @@ namespace Alessandro.Bankrupt
             _actions.Add(action);
         }
 
-        public void SetName(string name)
-        {
-            PlayerName = name;
-        }
+        public void SetName(string name) => PlayerName = name;
 
-        public void SetSteppedBoardSpace(int boardSpaceNumber)
-        {
-            SteppedBoardSpace = boardSpaceNumber;
-        }
+        public void SetSteppedBoardSpace(int boardSpaceNumber) => SteppedBoardSpace = boardSpaceNumber;
 
-        public int GetSteppedBoardSpace()
-        {
-            return SteppedBoardSpace;
-        }
+        public int SteppedBoardSpace1 => SteppedBoardSpace;
 
-        public void GainCoins(int amount)
-        {
-            Coins += amount;
-        }
+        public void GainCoins(int amount) => Coins += amount;
 
-        public void Pay(int amount)
-        {
-            Coins -= amount;
-        }
+        public void Pay(int amount) => Coins -= amount;
 
-        public bool HasEnoughCoins(int amount)
-        {
-            return Coins >= amount;
-        }
+        public bool HasEnoughCoins(int amount) => Coins >= amount;
 
         public void Play(Game gameInstance)
         {
             if (IsLoser)
             {
                 gameInstance.Board.ResetAllSpacesBelongingToPlayer(this);
-                Lose = true;
+                HasLost = true;
                 return;
             }
 

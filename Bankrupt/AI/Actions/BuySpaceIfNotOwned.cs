@@ -5,7 +5,7 @@ public class BuySpaceIfNotOwned : GameAction
 {
     public override void Act(Game game, Player player)
     {
-        var steppedSpace = game.Board.GetSpaceByNumber(player.GetSteppedBoardSpace());
+        var steppedSpace = game.Board.GetSpaceByNumber(player.SteppedBoardSpace1);
 
         if (steppedSpace.HasOwner()) return;
         if (!player.HasEnoughCoins(steppedSpace.BoughtValue)) return;

@@ -4,13 +4,7 @@ public class BoardSpace
 {
     public static int TotalSpacesCount { get; set; }
     public static int TotalOwnedSpacesCount { get; set; }
-    public static int TotalEmptySpacesCount
-    {
-        get
-        {
-            return TotalSpacesCount - TotalOwnedSpacesCount;
-        }
-    }
+    public static int TotalEmptySpacesCount => TotalSpacesCount - TotalOwnedSpacesCount;
 
     public int BoughtValue { get; set; }
 
