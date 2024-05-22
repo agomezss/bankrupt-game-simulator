@@ -7,9 +7,9 @@ public class PayRentValueIfSteppedOnOwnedSpace : GameAction
     {
         var steppedSpace = game.Board.GetSpaceByNumber(player.SteppedBoardSpace1);
 
-        if (!steppedSpace.HasOwner()) return;
-        if (steppedSpace.GetOwner() == player) return;
-
+        if (!steppedSpace.HasOwner()
+            || steppedSpace.GetOwner() == player) return;
+            
         player.Pay(steppedSpace.RentValue);
         steppedSpace.GetOwner().GainCoins(steppedSpace.RentValue);
     }

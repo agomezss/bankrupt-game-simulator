@@ -4,8 +4,5 @@ namespace Alessandro.Bankrupt;
 
 public class ImpulsivePlayer : Player
 {
-    public ImpulsivePlayer() : base("Impulsive")
-    {
-        AddAction<BuySpaceIfNotOwned>();
-    }
+    public ImpulsivePlayer() : base("Impulsive") => AddAction<BuySpaceIfNotOwned>();
 }

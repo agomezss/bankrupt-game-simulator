@@ -6,13 +6,10 @@ public class BuyIfEightyCoinsLeftAfterPurchase : GameAction
     {
         var steppedSpace = game.Board.GetSpaceByNumber(player.SteppedBoardSpace1);
 
-        if (steppedSpace.HasOwner()) return;
-        if (!player.HasEnoughCoins(steppedSpace.BoughtValue)) return;
-
-        var shouldBuy = player.Coins - steppedSpace.BoughtValue >= 80;
-
-        if (!shouldBuy) return;
-
+        if (steppedSpace.HasOwner()
+            || !player.HasEnoughCoins(steppedSpace.BoughtValue)
+            || !(player.Coins - steppedSpace.BoughtValue >= 80)) return;
+            
         player.Pay(steppedSpace.BoughtValue);
         steppedSpace.Claim(player);
     }

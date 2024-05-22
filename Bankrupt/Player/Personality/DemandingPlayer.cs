@@ -4,8 +4,5 @@ namespace Alessandro.Bankrupt;
 
 public class DemandingPlayer : Player
 {
-    public DemandingPlayer() : base("Demanding")
-    {
-        AddAction<BuyIfRentValueGreaterThanFifty>();
-    }
+    public DemandingPlayer() : base("Demanding") => AddAction<BuyIfRentValueGreaterThanFifty>();
 }

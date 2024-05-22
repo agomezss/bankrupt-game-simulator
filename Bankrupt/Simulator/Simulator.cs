@@ -7,12 +7,14 @@ public static class Simulator
     public static double AverageTurnDuration => Simulations.Select(a => a.LastedTurns)
                                                            .Average();
 
-    public static string WinnestPlayer
+    public static string? WinnestPlayer
     {
         get
         {
-            return Simulations.GroupBy(x => x.WinnerName,
-                               (t, g) => new { nome = t, val = g.Count() }).OrderByDescending(a => a.val).Select(a => a.nome).FirstOrDefault();
+            return Simulations?.GroupBy(x => x.WinnerName,
+                               (t, g) => new { nome = t, val = g.Count() })
+                              .OrderByDescending(a => a.val)
+                              .Select(a => a.nome).FirstOrDefault();
         }
     }
 

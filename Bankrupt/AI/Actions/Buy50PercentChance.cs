@@ -6,10 +6,10 @@ public class Buy50PercentChance : GameAction
     {
         var steppedSpace = game.Board.GetSpaceByNumber(player.SteppedBoardSpace1);
 
-        if (steppedSpace.HasOwner()) return;
-        if (!player.HasEnoughCoins(steppedSpace.BoughtValue)) return;
-        if (!Randomizer.RollBool) return;
-
+        if (steppedSpace.HasOwner()
+            || !player.HasEnoughCoins(steppedSpace.BoughtValue)
+            || !Randomizer.RollBool) return;
+            
         player.Pay(steppedSpace.BoughtValue);
         steppedSpace.Claim(player);
     }

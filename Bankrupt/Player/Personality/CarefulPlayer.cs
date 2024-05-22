@@ -4,8 +4,5 @@ namespace Alessandro.Bankrupt;
 
 public class CarefulPlayer : Player
 {
-    public CarefulPlayer() : base("Careful")
-    {
-        AddAction<BuyIfEightyCoinsLeftAfterPurchase>();
-    }
+    public CarefulPlayer() : base("Careful") => AddAction<BuyIfEightyCoinsLeftAfterPurchase>();
 }

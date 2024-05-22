@@ -4,8 +4,5 @@ namespace Alessandro.Bankrupt;
 
 public class RandomPlayer : Player
 {
-    public RandomPlayer() : base("Random")
-    {
-        AddAction<Buy50PercentChance>();
-    }
+    public RandomPlayer() : base("Random") => AddAction<Buy50PercentChance>();
 }
