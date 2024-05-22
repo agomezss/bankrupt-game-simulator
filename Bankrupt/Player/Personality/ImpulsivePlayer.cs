@@ -1,12 +1,11 @@
 ﻿using Alessandro.Bankrupt.AI.Actions;
 
-namespace Alessandro.Bankrupt
+namespace Alessandro.Bankrupt;
+
+public class ImpulsivePlayer : Player
 {
-    public class ImpulsivePlayer : Player
+    public ImpulsivePlayer() : base("Impulsive")
     {
-        public ImpulsivePlayer() : base("Impulsive")
-        {
-            AddAction<BuySpaceIfNotOwned>();
-        }
+        AddAction<BuySpaceIfNotOwned>();
     }
 }

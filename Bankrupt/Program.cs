@@ -1,3 +1,3 @@
-﻿Alessandro.Bankrupt.Simulator.Simulate(100);
+﻿Alessandro.Bankrupt.Simulator.Simulate(1000);
 Alessandro.Bankrupt.Simulator.PrintResults();
-Console.ReadLine();
+Console.In.ReadLine();

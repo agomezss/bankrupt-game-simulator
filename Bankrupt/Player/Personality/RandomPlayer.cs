@@ -1,12 +1,11 @@
 ﻿using Alessandro.Bankrupt.AI.Actions;
 
-namespace Alessandro.Bankrupt
+namespace Alessandro.Bankrupt;
+
+public class RandomPlayer : Player
 {
-    public class RandomPlayer : Player
+    public RandomPlayer() : base("Random")
     {
-        public RandomPlayer() : base("Random")
-        {
-            AddAction<Buy50PercentChance>();
-        }
+        AddAction<Buy50PercentChance>();
     }
 }

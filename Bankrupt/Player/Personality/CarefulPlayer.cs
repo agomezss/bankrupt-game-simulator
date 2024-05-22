@@ -1,12 +1,11 @@
 ﻿using Alessandro.Bankrupt.AI.Actions;
 
-namespace Alessandro.Bankrupt
+namespace Alessandro.Bankrupt;
+
+public class CarefulPlayer : Player
 {
-    public class CarefulPlayer : Player
+    public CarefulPlayer() : base("Careful")
     {
-        public CarefulPlayer() : base("Careful")
-        {
-            AddAction<BuyIfEightyCoinsLeftAfterPurchase>();
-        }
+        AddAction<BuyIfEightyCoinsLeftAfterPurchase>();
     }
 }
